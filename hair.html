@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="cat.png">
+  <link href="img/favicon.ico" rel="icon">
+  <title>💌 Love Invitation — 2 Years & 3 Months</title>
+  <style>
+    :root{
+      --bg1:#ffe6f2;
+      --bg2:#efe7ff;
+      --bg3:#e7fff5;
+      --ink:#2a2240;
+      --muted:#5a4f78;
+      --card:rgba(255,255,255,.72);
+      --stroke:rgba(255,255,255,.55);
+      --shadow: 0 18px 55px rgba(42,34,64,.18);
+      --pink:#ff5fa2;
+      --lav:#8b6cff;
+      --mint:#35d2a7;
+      --gold:#ffcc66;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1100px 700px at 15% 10%, var(--bg1), transparent 65%),
+        radial-gradient(900px 600px at 85% 15%, var(--bg2), transparent 60%),
+        radial-gradient(900px 650px at 55% 95%, var(--bg3), transparent 65%),
+        linear-gradient(180deg, #fff 0%, #fff7fb 45%, #ffffff 100%);
+      position:relative;
+    }
+
+    /* Cute subtle pattern */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image:
+        radial-gradient(rgba(255,95,162,.18) 1px, transparent 1px),
+        radial-gradient(rgba(139,108,255,.14) 1px, transparent 1px);
+      background-size: 34px 34px, 44px 44px;
+      background-position: 0 0, 16px 20px;
+      pointer-events:none;
+      opacity:.55;
+      mix-blend-mode:multiply;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 70px;
+      position:relative;
+      z-index:2;
+    }
+
+    .card{
+      width:min(980px, 100%);
+      background:var(--card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border:1px solid var(--stroke);
+      border-radius:26px;
+      box-shadow: var(--shadow);
+      padding:26px 18px 20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .shine{
+      position:absolute;
+      inset:-120px -220px auto auto;
+      width:420px; height:420px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%);
+      transform: rotate(18deg);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:8px 8px 4px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 10px 30px rgba(42,34,64,.10);
+      user-select:none;
+    }
+    .badge .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(135deg, var(--pink), var(--lav));
+      box-shadow: 0 0 0 4px rgba(255,95,162,.12);
+    }
+    .badge span{
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .pill-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:650;
+      font-size:14px;
+      color:var(--muted);
+      background: rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.6);
+      user-select:none;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      padding: 10px 8px 14px;
+    }
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr}
+      .pill-row{justify-content:flex-start}
+    }
+
+    .title{
+      padding:12px 12px 10px;
+      border-radius:18px;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .title h1{
+      margin:0;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.02;
+      letter-spacing:-.6px;
+    }
+    .title p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size: clamp(14px, 1.5vw, 16px);
+      line-height:1.45;
+    }
+
+    .name{
+      display:inline-block;
+      padding:0 .15em;
+      background: linear-gradient(120deg, rgba(255,95,162,.18), rgba(139,108,255,.16));
+      border-radius:10px;
+    }
+
+    .details{
+      padding:12px 12px 10px;
+      border-radius:18px;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.55);
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 0;
+      border-bottom:1px dashed rgba(90,79,120,.18);
+    }
+    .row:last-child{border-bottom:none}
+    .icon{
+      width:36px;height:36px;border-radius:12px;
+      display:grid;place-items:center;
+      background: rgba(255,255,255,.8);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 10px 25px rgba(42,34,64,.08);
+      flex:0 0 auto;
+      font-size:18px;
+    }
+    .row .txt b{display:block}
+    .row .txt small{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      padding: 8px;
+    }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .panel{
+      border-radius:18px;
+      background: rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.55);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+
+    .agenda{
+      display:grid;
+      gap:10px;
+    }
+    .agenda .item{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding:12px 12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.65);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .agenda .item:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(42,34,64,.12);
+    }
+    .agenda .item .emo{
+      width:40px;height:40px;border-radius:16px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, rgba(255,95,162,.18), rgba(53,210,167,.14));
+      border:1px solid rgba(255,255,255,.75);
+      font-size:20px;
+      flex:0 0 auto;
+    }
+    .agenda .item .what b{display:block}
+    .agenda .item .what small{color:var(--muted)}
+
+    .countdown{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .timebox{
+      flex:1 1 90px;
+      min-width:90px;
+      padding:12px 10px;
+      border-radius:16px;
+      background: rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.65);
+      text-align:center;
+    }
+    .timebox .num{
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:-.6px;
+    }
+    .timebox .lab{
+      margin-top:2px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:650;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    button, .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:14px;
+      color:var(--ink);
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 12px 30px rgba(42,34,64,.12);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    button:hover, .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(42,34,64,.16);
+      filter:saturate(1.05);
+    }
+    .primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--pink), var(--lav));
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .ghost{
+      background: rgba(255,255,255,.6);
+    }
+
+    footer{
+      padding: 8px 10px 0;
+      color:var(--muted);
+      font-size:12.5px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    footer .hint{
+      opacity:.95;
+    }
+
+    /* Floating hearts */
+    .float-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+    .heart{
+      position:absolute;
+      width:18px; height:18px;
+      transform: rotate(45deg);
+      opacity:.85;
+      filter: drop-shadow(0 10px 10px rgba(42,34,64,.12));
+      animation: rise linear forwards;
+    }
+    .heart::before,
+    .heart::after{
+      content:"";
+      position:absolute;
+      width:18px; height:18px;
+      background: inherit;
+      border-radius:50%;
+    }
+    .heart::before{left:-9px; top:0}
+    .heart::after{left:0; top:-9px}
+
+    @keyframes rise{
+      from{ transform: translateY(0) rotate(45deg) scale(1); opacity:0}
+      10%{opacity:.85}
+      to{ transform: translateY(-110vh) rotate(45deg) scale(1.25); opacity:0}
+    }
+
+    /* Modal */
+    .backdrop{
+      position:fixed; inset:0;
+      background: rgba(42,34,64,.35);
+      backdrop-filter: blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:10;
+      padding:18px;
+    }
+    .backdrop.show{display:flex}
+    .modal{
+      width:min(520px, 100%);
+      border-radius:22px;
+      background: rgba(255,255,255,.86);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 22px 70px rgba(42,34,64,.22);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .modal h3{margin:2px 0 8px; font-size:20px}
+    .modal p{margin:0 0 12px; color:var(--muted); line-height:1.45}
+    .close{
+      position:absolute; top:10px; right:10px;
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 12px 26px rgba(42,34,64,.12);
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9;
+      overflow:hidden;
+    }
+    .conf{
+      position:absolute;
+      width:8px;height:12px;
+      border-radius:3px;
+      opacity:.95;
+      animation: fall 900ms linear forwards;
+    }
+    @keyframes fall{
+      from{ transform: translateY(-10px) rotate(0deg); opacity:1}
+      to{ transform: translateY(110vh) rotate(420deg); opacity:0.9}
+    }
+
+    /* Tiny toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow: 0 18px 50px rgba(42,34,64,.18);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:750;
+      color:var(--ink);
+      opacity:0;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index:20;
+      pointer-events:none;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Cute wiggle for the heart in title */
+    .wiggle{
+      display:inline-block;
+      animation: wiggle 1.7s ease-in-out infinite;
+      transform-origin: 50% 70%;
+    }
+    @keyframes wiggle{
+      0%,100%{transform: rotate(0deg) translateY(0)}
+      25%{transform: rotate(-6deg) translateY(-1px)}
+      50%{transform: rotate(6deg) translateY(-1px)}
+      75%{transform: rotate(-3deg) translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
+  <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="wrap">
+    <main class="card" role="main">
+      <div class="shine" aria-hidden="true"></div>
+
+      <header>
+        <div class="badge">
+          <div class="dot"></div>
+          <span>You're invited 💌</span>
+        </div>
+        <div class="pill-row">
+          <div class="pill">2 years & 3 months</div>
+          <div class="pill" id="yourTimePill">Date: —</div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="title">
+          <h1>
+            Anniversary date with
+            <span class="name">Tushig</span> (aka <span class="name">Boj</span>)
+            <span class="wiggle">❤️</span>
+          </h1>
+          <p>
+            Hairdaa 2jil 3n sar buyu 15n sariin mend hurgeyyyyy!
+          </p>
+        </div>
+
+        <div class="details" aria-label="Invitation details">
+          <div class="row">
+            <div class="icon">📅</div>
+            <div class="txt">
+              <b>Saturday, January 3rd, 2026</b>
+              <small id="dateLine">7:00 PM (Boj’s time)</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="icon">🏡</div>
+            <div class="txt">
+              <b>Where</b>
+              <small>Medeej messenger call</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Plan</h2>
+          <div class="agenda">
+            <div class="item">
+              <div class="emo">🍳</div>
+              <div class="what">
+                <b>We gonna cook together</b>
+                <small>Hamtdaa busdaas hamaarahgu zuvhun uursdundu quality time gargaj, hamtdaa az jargaltaigaar ineelden hooloo hiine</small>
+              </div>
+            </div>
+            <div class="item">
+              <div class="emo">🗣️</div>
+              <div class="what">
+                <b>We gonna talk alot</b>
+                <small>Udaan hairtaigaa tuhtai yriagu T-T </small>
+              </div>
+            </div>
+            <div class="item">
+              <div class="emo">🎤</div>
+              <div class="what">
+                <b>We gonna play (singing game)</b>
+                <small>ylsan n ter udruu more bolno, teged neg shirheg iluu unselt avna</small>
+              </div>
+            </div>
+            <div class="item">
+              <div class="emo">🎬</div>
+              <div class="what">
+                <b>We gonna watch a movie</b>
+                <small>Hamtdaa tevreldeed goy kino hamt uzne, Back to the Future -iin 2 ticket avtsan shuu tsagtaa ireerei</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Countdown</h2>
+          <div class="countdown" aria-label="Countdown timer">
+            <div class="timebox"><div class="num" id="d">—</div><div class="lab">Days</div></div>
+            <div class="timebox"><div class="num" id="h">—</div><div class="lab">Hours</div></div>
+            <div class="timebox"><div class="num" id="m">—</div><div class="lab">Minutes</div></div>
+            <div class="timebox"><div class="num" id="s">—</div><div class="lab">Seconds</div></div>
+          </div>
+
+          <div class="cta" style="margin-top:14px">
+            <button class="primary" id="rsvpBtn">I’m in! 💞</button>
+            <button class="ghost" id="copyBtn">Copy details ✨</button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close" id="closeModal" aria-label="Close">✕</button>
+      <h3 id="modalTitle">YEEEESH!!</h3>
+      <p>
+        Lesgoooooooo, lov mov kis mis, unjiidaa
+      </p>
+      <div class="cta">
+        <button class="primary" id="confettiBtn">Soluit 🎉</button>
+        <button class="ghost" id="copyBtn2">Copy date details</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const EVENT_ISO = "2026-01-03T19:00:00-06:00";
+    const eventDate = new Date(EVENT_ISO);
+
+    const el = (id) => document.getElementById(id);
+
+    // ---- Pretty date lines
+    function formatNice(d){
+      return d.toLocaleString(undefined, {
+        weekday:"long", year:"numeric", month:"long", day:"numeric",
+        hour:"numeric", minute:"2-digit"
+      });
+    }
+
+    function updateYourTimePill(){
+      const your = formatNice(eventDate);
+      el("yourTimePill").textContent = "Your time: " + your;
+      el("dateLine").textContent = "7:00 PM (Boj’s time) • Your time: " + eventDate.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+    }
+
+    // ---- Countdown
+    function pad(n){ return String(n).padStart(2,"0"); }
+
+    function tick(){
+      const now = new Date();
+      let diff = eventDate - now;
+
+      if (diff <= 0){
+        el("d").textContent = "0";
+        el("h").textContent = "00";
+        el("m").textContent = "00";
+        el("s").textContent = "00";
+        // Soft message swap
+        el("dateLine").textContent = "It’s time 🥹💞 (Boj’s time)";
+        return;
+      }
+
+      const sec = Math.floor(diff/1000);
+      const days = Math.floor(sec / (3600*24));
+      const hours = Math.floor((sec % (3600*24)) / 3600);
+      const mins  = Math.floor((sec % 3600) / 60);
+      const s     = sec % 60;
+
+      el("d").textContent = String(days);
+      el("h").textContent = pad(hours);
+      el("m").textContent = pad(mins);
+      el("s").textContent = pad(s);
+    }
+
+    // ---- Floating hearts (cute!)
+    const floatLayer = el("floatLayer");
+    const heartColors = [
+      "rgba(255,95,162,.95)",
+      "rgba(139,108,255,.92)",
+      "rgba(53,210,167,.88)",
+      "rgba(255,204,102,.92)"
+    ];
+
+    function spawnHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const size = 10 + Math.random()*16;
+      h.style.width = size + "px";
+      h.style.height = size + "px";
+      h.style.left = Math.random()*100 + "vw";
+      h.style.bottom = (-20 - Math.random()*40) + "px";
+      h.style.background = heartColors[Math.floor(Math.random()*heartColors.length)];
+      const dur = 6 + Math.random()*6;
+      h.style.animationDuration = dur + "s";
+      h.style.animationDelay = (Math.random()*0.5) + "s";
+      floatLayer.appendChild(h);
+      setTimeout(()=> h.remove(), (dur+1)*1000);
+    }
+
+    function startHearts(){
+      // Start a gentle stream
+      for(let i=0;i<10;i++) setTimeout(spawnHeart, i*250);
+      setInterval(()=>{
+        if (document.hidden) return;
+        spawnHeart();
+      }, 650);
+    }
+
+    // ---- Toast
+    const toast = el("toast");
+    let toastTimer = null;
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> toast.classList.remove("show"), 1600);
+    }
+
+    // ---- Copy details
+    const detailsText = () => {
+      const lines = [
+        "💌 Love Invitation — 2 years & 3 months",
+        "With: Tushig (aka Boj)",
+        "When: Saturday, January 3rd, 2026",
+        "Time: 7:00 PM (Boj's time)",
+        "Plan:",
+        "• We gonna cook",
+        "• We gonna talk",
+        "• We gonna play (singing game)",
+        "• We gonna watch a movie",
+      ];
+      return lines.join("\n");
+    };
+
+    async function copyDetails(){
+      try{
+        await navigator.clipboard.writeText(detailsText());
+        showToast("Copied! ✨");
+      }catch(e){
+        // Fallback
+        const ta = document.createElement("textarea");
+        ta.value = detailsText();
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        showToast("Copied! ✨");
+      }
+    }
+
+    // ---- Modal
+    const backdrop = el("backdrop");
+    function openModal(){
+      backdrop.classList.add("show");
+      popConfetti(120);
+    }
+    function closeModal(){
+      backdrop.classList.remove("show");
+    }
+
+    // ---- Confetti (simple + cute)
+    const confettiLayer = el("confettiLayer");
+    const confColors = [
+      "rgba(255,95,162,.95)",
+      "rgba(139,108,255,.95)",
+      "rgba(53,210,167,.95)",
+      "rgba(255,204,102,.95)",
+      "rgba(255,255,255,.95)"
+    ];
+
+    function popConfetti(n=80){
+      const w = window.innerWidth;
+      for(let i=0;i<n;i++){
+        const c = document.createElement("div");
+        c.className = "conf";
+        c.style.left = (Math.random()*w) + "px";
+        c.style.top = (-20 - Math.random()*120) + "px";
+        c.style.background = confColors[(Math.random()*confColors.length)|0];
+        c.style.animationDuration = (650 + Math.random()*650) + "ms";
+        c.style.transform = `rotate(${Math.random()*90}deg)`;
+        c.style.width = (6 + Math.random()*8) + "px";
+        c.style.height = (8 + Math.random()*12) + "px";
+        confettiLayer.appendChild(c);
+        setTimeout(()=> c.remove(), 1400);
+      }
+    }
+
+    // ---- Wire up buttons
+    el("rsvpBtn").addEventListener("click", openModal);
+    el("closeModal").addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (e)=>{ if(e.target === backdrop) closeModal(); });
+
+    el("copyBtn").addEventListener("click", copyDetails);
+    el("copyBtn2").addEventListener("click", copyDetails);
+    el("confettiBtn").addEventListener("click", ()=> popConfetti(160));
+
+    // ---- Init
+    updateYourTimePill();
+    tick();
+    setInterval(tick, 1000);
+    startHearts();
+  </script>
+</body>
+</html>
